@@ -10,7 +10,7 @@
 
 ## 👤 Owner
 
-[![Contact Developer](https://img.shields.io/static/v1?label=Contact+Developer&message=On+Telegram&color=critical)](https://t.me/Deendayal_Support_Group)
+[![Contact Developer](https://img.shields.io/static/v1?label=Contact+Developer&message=On+Telegram&color=critical)](https://t.me/mimam_ripper)
 
 ---
 
@@ -22,7 +22,7 @@
 
 Try the live bot here:
 
-[![Click Here](https://img.shields.io/badge/Demo%20Bot-Click%20Here-blue?style=flat&logo=telegram&labelColor=white)](https://t.me/Princess_V4_bot)
+[![Click Here](https://img.shields.io/badge/Demo%20Bot-Click%20Here-blue?style=flat&logo=telegram&labelColor=white)](https://t.me/MrnUniverseFilterBot)
 
 ---
 
@@ -37,11 +37,8 @@ Try the live bot here:
 
 ## 🙏 Special Thanks To
 
-- 🌴 [⌯ Ꭺɴᴏɴʏᴍᴏᴜꜱ | ×͜× |](https://t.me/BeingXAnonymous)
-- 🌴 [⌯ ᴢɪsʜᴀɴ | ×͜× |](https://t.me/IM_JISSHU)
-- 🌴 [⌯ ʙʜᴀʀᴀᴛʜ | ×͜× |](https://t.me/Bharath_boy)
-- 🌴 [Harshal Purohit Edits](https://github.com/HarshalPurohitEdits)
-- 🌴 [Support Group](https://t.me/Deendayal_Support_Group)
+- 🌴 [𝄟͢🦋⃟≛⃝ 𝐌𝐮𝐳𝐚𝐟𝐟𝐚𝐫 𝄟⃝❤](https://t.me/mimam_ripper)
+- 🌴 [Support Group](https://t.me/+lTO1v9u3v4FhODNl)
 
 ---
 
@@ -49,7 +46,7 @@ Try the live bot here:
 
 Join our support group for assistance:
 
-[![Join Support Group](https://img.shields.io/badge/Join%20Support%20Group-Click%20Here-blue?style=flat&logo=telegram&labelColor=white)](https://t.me/Deendayal_Support_Group)
+[![Join Support Group](https://img.shields.io/badge/Join%20Support%20Group-Click%20Here-blue?style=flat&logo=telegram&labelColor=white)](https://t.me/+lTO1v9u3v4FhODNl)
 
 ---
 
@@ -92,7 +89,7 @@ Join our support group for assistance:
 - ✅ Auto Delete Old Files  
 - ✅ …and more!
 
-📌 *To stay updated with all new features, join our [Updates Channel](https://t.me/dreamxbotz).*
+📌 *To stay updated with all new features, join our [Updates Channel](https://t.me/Mrn_Officialx).*
 
 ---
 
@@ -144,4 +141,4 @@ This project is licensed under the [MIT License](https://github.com/MrRaazz/Drea
 
 ---
 
-<p align="center"><b>Jai Shree Krishna 🙏😉</b></p>
+<p align="center"><b>🌺 Khuda Hafiz 🌺</b></p>
