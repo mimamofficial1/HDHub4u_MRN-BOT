@@ -33,7 +33,7 @@ class Database:
         return True
  
      
-    async def add_join_req(self, user_id: int, channel_id: int): #update
+    async def add_join_req(self, user_id: int, channel_id: int):
         await self.req.update_one(
             {'user_id': user_id},
             {
@@ -141,6 +141,7 @@ class Database:
         await self.grp.update_one({'id': int(id)}, {'$set': {'settings': settings}})
                                   
     async def get_settings(self, id):
+        # ✅ 3rd shortner entries removed
         default = {
             'button': BUTTON_MODE,
             'botpm': P_TTI_SHOW_OFF,
@@ -155,16 +156,12 @@ class Database:
             'log': LOG_VR_CHANNEL,
             'tutorial': TUTORIAL,
             'tutorial_2': TUTORIAL_2,
-            'tutorial_3': TUTORIAL_3,
             'shortner': SHORTENER_WEBSITE,
             'api': SHORTENER_API,
             'shortner_two': SHORTENER_WEBSITE2,
             'api_two': SHORTENER_API2,
-            'shortner_three': SHORTENER_WEBSITE3,
-            'api_three': SHORTENER_API3,
             'is_verify': IS_VERIFY,
             'verify_time': TWO_VERIFY_GAP,
-            'third_verify_time': THREE_VERIFY_GAP,
             'caption': CUSTOM_FILE_CAPTION,
             'fsub': AUTH_CHANNELS,
         }
@@ -205,6 +202,7 @@ class Database:
     async def get_user(self, user_id):
         user_data = await self.users.find_one({"id": user_id})
         return user_data
+
     async def update_user(self, user_data):
         await self.users.update_one({"id": user_data["id"]}, {"$set": user_data}, upsert=True)
   
@@ -213,6 +211,7 @@ class Database:
         user = await self.misc.find_one({"user_id": user_id})
         ist_timezone = pytz.timezone('Asia/Kolkata')
         if not user:
+            # ✅ third_time_verified removed - sirf 2 shortner
             res = {
                 "user_id": user_id,
                 "last_verified": datetime.datetime(2020, 5, 17, 0, 0, 0, tzinfo=ist_timezone),
@@ -279,28 +278,8 @@ class Database:
                 return second_time < pastDate
         return False
 
-    async def use_third_shortener(self, user_id, time):
-        user = await self.get_notcopy_user(user_id)
-        if not user.get("third_time_verified"):
-            ist_timezone = pytz.timezone('Asia/Kolkata')
-            await self.update_notcopy_user(user_id, {"third_time_verified":datetime.datetime(2018, 5, 17, 0, 0, 0, tzinfo=ist_timezone)})
-            user = await self.get_notcopy_user(user_id)
-        if await self.user_verified(user_id):
-            try:
-                pastDate = user["second_time_verified"]
-            except Exception:
-                user = await self.get_notcopy_user(user_id)
-                pastDate = user["second_time_verified"]
-            ist_timezone = pytz.timezone('Asia/Kolkata')
-            pastDate = pastDate.astimezone(ist_timezone)
-            current_time = datetime.datetime.now(tz=ist_timezone)
-            time_difference = current_time - pastDate
-            if time_difference > datetime.timedelta(seconds=time):
-                pastDate = user["second_time_verified"].astimezone(ist_timezone)
-                second_time = user["third_time_verified"].astimezone(ist_timezone)
-                return second_time < pastDate
-        return False
-   
+    # ✅ use_third_shortener REMOVED - 3rd shortner nahi hai ab
+
     async def create_verify_id(self, user_id: int, hash):
         res = {"user_id": user_id, "hash":hash, "verified":False}
         return await self.verify_id.insert_one(res)
@@ -324,8 +303,6 @@ class Database:
             else:
                 await self.users.update_one({"id": user_id}, {"$set": {"expiry_time": None}})
         return False
-        
-    
 
     async def update_one(self, filter_query, update_data):
         try:
@@ -372,7 +349,7 @@ class Database:
         
     async def all_premium_users(self):
         count = await self.users.count_documents({
-        "expiry_time": {"$gt": datetime.datetime.now()}
+            "expiry_time": {"$gt": datetime.datetime.now()}
         })
         return count
     
@@ -388,7 +365,7 @@ class Database:
         )
 
     async def connect_group(self, group_id, user_id):
-        user= await self.connection.find_one({'_id': user_id})
+        user = await self.connection.find_one({'_id': user_id})
         if user:
             if group_id not in user["group_ids"]:
                 await self.connection.update_one({'_id': user_id}, {"$push": {"group_ids": group_id}})
@@ -428,5 +405,3 @@ class Database:
      
 db = Database(DATABASE_URI, DATABASE_NAME)    
 db2 = Database(DATABASE_URI2, DATABASE_NAME)
-
-
