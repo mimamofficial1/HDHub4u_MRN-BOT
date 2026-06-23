@@ -1451,7 +1451,15 @@ async def cb_handler(client: Client, query: CallbackQuery):
                     InlineKeyboardButton(' ᴀʙᴏᴜᴛ 📖', callback_data='about')
                 ],[
                     InlineKeyboardButton('ᴛᴏᴘ sᴇᴀʀᴄʜɪɴɢ ⭐', callback_data="topsearch"),
-                     InlineKeyboardButton('ᴜᴘɢʀᴀᴅᴇ 🎟', callback_data="premium_info"),
+                    InlineKeyboardButton('UPGRADE 🎟', callback_data="premium_info")
+                ],[
+                    InlineKeyboardButton('🌺 ᴊᴏɪɴ ᴜᴘᴅᴀᴛᴇ ᴄʜᴀɴɴᴇʟ 🌺', url='https://t.me/+PArBpI-yLp5hMjQ1'),
+                    InlineKeyboardButton('♻️ ᴍᴏᴠɪᴇs sᴇᴀʀᴄʜ ɢʀᴏᴜᴘ ♻️', url='https://t.me/+T5B4zp8-Wjg5MTU9')
+                ],[
+                    InlineKeyboardButton('💎 ᴄᴏᴍᴘʟᴀɪɴʏ sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ 💎', url='https://t.me/+lTO1v9u3v4FhODNl')
+                ],[
+                    InlineKeyboardButton('🥰 ʀᴇᴀʟɪᴛʏ ᴛᴠ sʜᴏᴡs 🥰', url='https://t.me/+MdUPwSnwvP0zN2U1'),
+                    InlineKeyboardButton('📨 ᴏᴡɴᴇʀ ᴄᴏɴᴛᴀᴄᴛ 📨', url='https://t.me/mimam_officialx')
                 ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         current_time = datetime.now(pytz.timezone(TIMEZONE))
