@@ -33,8 +33,8 @@ BTN_URL_REGEX = re.compile(
 
 imdb = IMDBKit() 
 BANNED = {}
-SMART_OPEN = '“'
-SMART_CLOSE = '”'
+SMART_OPEN = '\u201c'
+SMART_CLOSE = '\u201d'
 START_CHAR = ('\'', '"', SMART_OPEN)
 
 
@@ -108,7 +108,6 @@ async def is_subscribed(bot, user_id, fsub_channels):
     
     async def check_channel(channel_id):
         try:
-            # No need to get chat object separately
             await bot.get_chat_member(channel_id, user_id)
         except UserNotParticipant:
             try:
@@ -221,10 +220,6 @@ async def get_status(bot_id):
         return False  
 
 async def add_name_to_db(filename):
-    """
-    Helper function to add a filename to the database.
-    """
-    
     return await db.add_name(filename) 
 
 
@@ -232,7 +227,6 @@ def listx_to_str(k):
     if k is None or k == "":
         return "N/A"
     
-    # Handle non-iterable types first
     if not hasattr(k, '__iter__') or isinstance(k, (str, int, float)):
         return str(k)
     
@@ -341,7 +335,6 @@ async def get_poster(query, bulk=False, id=False, file=None):
         "url": movie.url or f"https://www.imdb.com/title/{imdb_id}"
     }
     
-#Remove Nahi Kiya Hu.....Agar Tujha Remove Karna Hai To Kar Dena
 async def old_get_poster(query, bulk=False, id=False, file=None):
     if not id:
         query = (query.strip()).lower()
@@ -434,15 +427,9 @@ async def old_get_poster(query, bulk=False, id=False, file=None):
     }
     
 async def get_posterx(query, bulk=False, id=False, file=None):
-    """
-    Fetches movie details from TMDB using the get_movie_detailsx helper
-    and formats the output to be compatible with the original get_poster function.
-    """
     if not id:
-        # The get_movie_detailsx function handles searching by query string.
         details = await get_movie_detailsx(query, file=file)
     else:
-        # Assumes the 'id' is a TMDB ID or IMDb ID that get_movie_detailsx can handle.
         details = await get_movie_detailsx(query, id=True)
 
     if not details or details.get("error"):
@@ -458,8 +445,6 @@ async def get_posterx(query, bulk=False, id=False, file=None):
     if plot and len(plot) > 800:
         plot = plot[0:800] + "..."
 
-    # --- Mapping TMDB keys to the original IMDb key format ---
-
     def list_to_str(val):
         if isinstance(val, list):
             return ", ".join(str(x) for x in val if x)
@@ -468,7 +453,7 @@ async def get_posterx(query, bulk=False, id=False, file=None):
     return {
         'title': details.get('title'),
         'votes': details.get('votes'),
-        "aka": None,  # Not typically provided by TMDB in this format
+        "aka": None,
         "seasons": details.get('seasons'),
         "box_office": details.get('box_office'),
         'localized_title': details.get('localized_title'),
@@ -484,7 +469,7 @@ async def get_posterx(query, bulk=False, id=False, file=None):
         "producer": list_to_str(details.get("producer")),
         "composer": list_to_str(details.get("composer")),
         "cinematographer": list_to_str(details.get("cinematographer")),
-        "music_team": None, # Not provided by the TMDB API wrapper
+        "music_team": None,
         "distributors": list_to_str(details.get("distributors")),
         'release_date': details.get('release_date'),
         'year': details.get('year'),
@@ -506,18 +491,16 @@ async def search_gagala(text):
     response = requests.get(url, headers=usr_agent)
     response.raise_for_status()
     soup = BeautifulSoup(response.text, 'html.parser')
-    titles = soup.find_all( 'h3' )
+    titles = soup.find_all('h3')
     return [title.getText() for title in titles]
 
+# ✅ UPDATED: 3rd shortner removed, only 2 shortners now
 async def get_shortlink(link, grp_id, is_second_shortener=False, is_third_shortener=False):
     settings = await get_settings(grp_id)
-    if is_third_shortener:             
-        api, site = settings['api_three'], settings['shortner_three']
+    if is_second_shortener:
+        api, site = settings['api_two'], settings['shortner_two']
     else:
-        if is_second_shortener:
-            api, site = settings['api_two'], settings['shortner_two']
-        else:
-            api, site = settings['api'], settings['shortner']
+        api, site = settings['api'], settings['shortner']
     shortzy = Shortzy(api, site)
     try:
         link = await shortzy.convert(link)
@@ -570,6 +553,7 @@ def extract_request_content(message_text):
         return match.group(1).strip()
     return message_text.strip()
 
+# ✅ UPDATED: 3rd shortner aur tutorial_3 display hataya
 def generate_settings_text(settings, title, reset_done=False):
     note = "\n<b>📌 ɴᴏᴛᴇ :- ʀᴇꜱᴇᴛ ꜱᴜᴄᴄᴇꜱꜱғᴜʟʟʏ ✅</b>" if reset_done else ""
     return f"""<b>⚙️ ʏᴏᴜʀ sᴇᴛᴛɪɴɢs ꜰᴏʀ - {title}</b>
@@ -582,20 +566,13 @@ def generate_settings_text(settings, title, reset_done=False):
 <b>ɴᴀᴍᴇ</b> - <code>{settings.get("shortner_two", "N/A")}</code>
 <b>ᴀᴘɪ</b> - <code>{settings.get("api_two", "N/A")}</code>
 
-✅️ <b><u>𝟹ʀᴅ ᴠᴇʀɪꜰʏ sʜᴏʀᴛɴᴇʀ</u></b>
-<b>ɴᴀᴍᴇ</b> - <code>{settings.get("shortner_three", "N/A")}</code>
-<b>ᴀᴘɪ</b> - <code>{settings.get("api_three", "N/A")}</code>
-
 ⏰ <b>2ɴᴅ ᴠᴇʀɪꜰɪᴄᴀᴛɪᴏɴ ᴛɪᴍᴇ</b> - <code>{settings.get("verify_time", "N/A")}</code>
-⏰ <b>𝟹ʀᴅ ᴠᴇʀɪꜰɪᴄᴀᴛɪᴏɴ ᴛɪᴍᴇ</b> - <code>{settings.get("third_verify_time", "N/A")}</code>
 
 1️⃣ <b>ᴛᴜᴛᴏʀɪᴀʟ ʟɪɴᴋ 1</b> - {settings.get("tutorial", TUTORIAL)}
 2️⃣ <b>ᴛᴜᴛᴏʀɪᴀʟ ʟɪɴᴋ 2</b> - {settings.get("tutorial_2", TUTORIAL_2)}
-3️⃣ <b>ᴛᴜᴛᴏʀɪᴀʟ ʟɪɴᴋ 3</b> - {settings.get("tutorial_3", TUTORIAL_3)}
 
 📝 <b>ʟᴏɢ ᴄʜᴀɴɴᴇʟ ɪᴅ</b> - <code>{settings.get("log", "N/A")}</code>
 🚫 <b>ꜰꜱᴜʙ ᴄʜᴀɴɴᴇʟ ɪᴅ</b> - <code>{settings.get("fsub", "N/A")}</code>
-
 
 🎯 <b>ɪᴍᴅʙ ᴛᴇᴍᴘʟᴀᴛᴇ</b> - <code>{settings.get("template", "N/A")}</code>
 
@@ -667,13 +644,11 @@ def extract_user(message: Message) -> Union[int, str]:
             len(message.entities) > 1 and
             message.entities[1].type == enums.MessageEntityType.TEXT_MENTION
         ):
-           
             required_entity = message.entities[1]
             user_id = required_entity.user.id
             user_first_name = required_entity.user.first_name
         else:
             user_id = message.command[1]
-            # don't want to make a request -_-
             user_first_name = user_id
         try:
             user_id = int(user_id)
@@ -772,7 +747,6 @@ def gfilterparser(text, keyword):
                     text=match.group(2),
                     url=match.group(4).replace(" ", "")
                 )])
-
         else:
             note_data += text[prev:to_check]
             prev = match.start(1) - 1
@@ -824,7 +798,6 @@ def parser(text, keyword):
                     text=match.group(2),
                     url=match.group(4).replace(" ", "")
                 )])
-
         else:
             note_data += text[prev:to_check]
             prev = match.start(1) - 1
@@ -894,8 +867,6 @@ def generate_season_variations(search_raw: str, season_number: int):
         f"{search_raw} season {season_number}",
         f"{search_raw} season {season_number:02}",
     ]
-
-
 
 async def get_seconds(time_string):
     def extract_value_and_unit(ts):
@@ -1005,7 +976,6 @@ async def get_cap(settings, remaining_seconds, files, query, total_results, sear
                         url=imdb['url'],
                         **locals()
                     )
-                    
                     for idx, file in enumerate(files, start=offset+1):
                         cap += (
                             f"<b>{idx}. "
@@ -1041,7 +1011,6 @@ async def get_cap(settings, remaining_seconds, files, query, total_results, sear
                             f"{clean_filename(file.file_name)}\n\n"
                             f"</a></b>"
                         )
-
         else:
             if ULTRA_FAST_MODE:
                 cap = (
@@ -1057,7 +1026,6 @@ async def get_cap(settings, remaining_seconds, files, query, total_results, sear
                     f"📝 ʀᴇǫᴜᴇsᴛᴇᴅ ʙʏ : {query.from_user.mention}\n"
                     f"⚜️ ᴘᴏᴡᴇʀᴇᴅ ʙʏ : ⚡ {query.message.chat.title or temp.B_LINK or 'ᴅʀᴇᴀᴍxʙᴏᴛᴢ'}\n</b>"
                 )
-
             cap += "\n\n<u>Your Requested Files Are Here</u>\n\n</b>"
             for idx, file in enumerate(files, start=offset):
                         cap += (
