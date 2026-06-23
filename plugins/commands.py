@@ -31,7 +31,7 @@ BATCH_FILES = {}
 async def start(client, message):
     sticker = None
     try:
-        stick_id = "CAACAgUAAxkBAAEQJmJpViid_0yscWKPfh3RMCY8pIkmXwACMAcAAqzbsFexyKU6FPQAAjgE"
+        stick_id = "CAACAgUAAxkBAAERb_1qOk0RcUM0FLSjAAEwRBNtKUYVJ0AAAp8ZAALZi1FXHOU2_Un69bw8BA"
         try:
             sticker = await message.reply_sticker(sticker=stick_id)
         except Exception as e:
@@ -271,7 +271,7 @@ async def start(client, message):
                             InlineKeyboardButton("♻️ ᴛʀʏ ᴀɢᴀɪɴ ♻️", callback_data=f"checksub#{kk}#{file_id}")
                         ])
                         reply_markup = InlineKeyboardMarkup(btn)
-                    photo = random.choice(FSUB_PICS) if FSUB_PICS else "https://graph.org/file/7478ff3eac37f4329c3d8.jpg"
+                    photo = random.choice(FSUB_PICS) if FSUB_PICS else "https://files.catbox.moe/fed7vg.jpg"
                     caption = script.FORCESUB_TXT.format(message.from_user.mention)
                     await message.reply_photo(
                         photo=photo,
