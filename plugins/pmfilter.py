@@ -1445,21 +1445,21 @@ async def cb_handler(client: Client, query: CallbackQuery):
 
     elif query.data == "start":
         buttons = [[
-                    InlineKeyboardButton('🔰 ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ 🔰', url=f'http://telegram.me/{temp.U_NAME}?startgroup=true')
+                    InlineKeyboardButton('🔰 Aᴅᴅ Mᴇ Tᴏ Yᴏᴜʀ Gʀᴏᴜᴘ 🔰', url=f'http://telegram.me/{temp.U_NAME}?startgroup=true')
                 ],[
-                    InlineKeyboardButton(' ʜᴇʟᴘ 📢', callback_data='help'),
-                    InlineKeyboardButton(' ᴀʙᴏᴜᴛ 📖', callback_data='about')
+                    InlineKeyboardButton(' Hᴇʟᴘ 📢', callback_data='help'),
+                    InlineKeyboardButton(' Aʙᴏᴜᴛ 📖', callback_data='about')
                 ],[
-                    InlineKeyboardButton('ᴛᴏᴘ sᴇᴀʀᴄʜɪɴɢ ⭐', callback_data="topsearch"),
-                    InlineKeyboardButton('UPGRADE 🎟', callback_data="premium_info")
+                    InlineKeyboardButton('Tᴏᴘ Sᴇᴀʀᴄʜɪɴɢ ⭐', callback_data="topsearch"),
+                    InlineKeyboardButton('Uᴘɢʀᴀᴅᴇ 🎟', callback_data="premium_info")
                 ],[
-                    InlineKeyboardButton('🌺 ᴊᴏɪɴ ᴜᴘᴅᴀᴛᴇ ᴄʜᴀɴɴᴇʟ 🌺', url='https://t.me/+PArBpI-yLp5hMjQ1'),
-                    InlineKeyboardButton('♻️ ᴍᴏᴠɪᴇs sᴇᴀʀᴄʜ ɢʀᴏᴜᴘ ♻️', url='https://t.me/+T5B4zp8-Wjg5MTU9')
+                    InlineKeyboardButton('🌺 Jᴏɪɴ Uᴘᴅᴀᴛᴇ Cʜᴀɴɴᴇʟ 🌺', url='https://t.me/+PArBpI-yLp5hMjQ1'),
+                    InlineKeyboardButton('♻️ Mᴏᴠɪᴇs Sᴇᴀʀᴄʜ Gʀᴏᴜᴘ ♻️', url='https://t.me/+T5B4zp8-Wjg5MTU9')
                 ],[
-                    InlineKeyboardButton('💎 ᴄᴏᴍᴘʟᴀɪɴʏ sᴜᴘᴘᴏʀᴛ ɢʀᴏᴜᴘ 💎', url='https://t.me/+lTO1v9u3v4FhODNl')
+                    InlineKeyboardButton('🥀 Cᴏᴍᴘʟᴀɪɴʏ Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ 🥀', url='https://t.me/+lTO1v9u3v4FhODNl')
                 ],[
-                    InlineKeyboardButton('🥰 ʀᴇᴀʟɪᴛʏ ᴛᴠ sʜᴏᴡs 🥰', url='https://t.me/+MdUPwSnwvP0zN2U1'),
-                    InlineKeyboardButton('📨 ᴏᴡɴᴇʀ ᴄᴏɴᴛᴀᴄᴛ 📨', url='https://t.me/mimam_officialx')
+                    InlineKeyboardButton('🥰 Rᴇᴀʟɪᴛʏ Tᴠ Sʜᴏᴡs 🥰', url='https://t.me/+MdUPwSnwvP0zN2U1'),
+                    InlineKeyboardButton('📨 Oᴡɴᴇʀ Cᴏɴᴛᴀᴄᴛ 📨', url='https://t.me/mimam_officialx')
                 ]]
         reply_markup = InlineKeyboardMarkup(buttons)
         current_time = datetime.now(pytz.timezone(TIMEZONE))
