@@ -110,7 +110,7 @@ async def start(client, message):
                         InlineKeyboardButton('🌺 Jᴏɪɴ Uᴘᴅᴀᴛᴇ Cʜᴀɴɴᴇʟ 🌺', url='https://t.me/+PArBpI-yLp5hMjQ1'),
                         InlineKeyboardButton('♻️ Mᴏᴠɪᴇs Sᴇᴀʀᴄʜ Gʀᴏᴜᴘ ♻️', url='https://t.me/+T5B4zp8-Wjg5MTU9')
                     ],[
-                        InlineKeyboardButton('🥀 Cᴏᴍᴘʟᴀɪɴʏ Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ 🥀', url='https://t.me/+lTO1v9u3v4FhODNl')
+                        InlineKeyboardButton('🥀 Cᴏᴍᴘʟᴀɪɴᴛ Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ 🥀', url='https://t.me/+lTO1v9u3v4FhODNl')
                     ],[
                         InlineKeyboardButton('🥰 Rᴇᴀʟɪᴛʏ Tᴠ Sʜᴏᴡs 🥰', url='https://t.me/+MdUPwSnwvP0zN2U1'),
                         InlineKeyboardButton('📨 Oᴡɴᴇʀ Cᴏɴᴛᴀᴄᴛ 📨', url='https://t.me/mimam_officialx')
@@ -151,7 +151,7 @@ async def start(client, message):
                         InlineKeyboardButton('🌺 Jᴏɪɴ Uᴘᴅᴀᴛᴇ Cʜᴀɴɴᴇʟ 🌺', url='https://t.me/+PArBpI-yLp5hMjQ1'),
                         InlineKeyboardButton('♻️ Mᴏᴠɪᴇs Sᴇᴀʀᴄʜ Gʀᴏᴜᴘ ♻️', url='https://t.me/+T5B4zp8-Wjg5MTU9')
                     ],[
-                        InlineKeyboardButton('🥀 Cᴏᴍᴘʟᴀɪɴʏ Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ 🥀', url='https://t.me/+lTO1v9u3v4FhODNl')
+                        InlineKeyboardButton('🥀 Cᴏᴍᴘʟᴀɪɴᴛ Sᴜᴘᴘᴏʀᴛ Gʀᴏᴜᴘ 🥀', url='https://t.me/+lTO1v9u3v4FhODNl')
                     ],[
                         InlineKeyboardButton('🥰 Rᴇᴀʟɪᴛʏ Tᴠ Sʜᴏᴡs 🥰', url='https://t.me/+MdUPwSnwvP0zN2U1'),
                         InlineKeyboardButton('📨 Oᴡɴᴇʀ Cᴏɴᴛᴀᴄᴛ 📨', url='https://t.me/mimam_officialx')
