@@ -106,11 +106,11 @@ TUTORIAL = environ.get("TUTORIAL", "https://t.me/MRN_Tutorial/1974")   # Tutoria
 TUTORIAL_2 = environ.get("TUTORIAL_2", "https://t.me/MRN_Tutorial/1974")   # Tutorial link for 2nd verification
 
 # Verification (Must Fill All Variables. Else You Got Error)
-SHORTENER_API = environ.get("SHORTENER_API", "av_botz_RjVgwi9sjP5DyN8k3EL3B8SDNZvPR") # Shortener API key
-SHORTENER_WEBSITE = environ.get("SHORTENER_WEBSITE", "mrn-officialx.vercel.app") # Shortener website
+SHORTENER_API = environ.get("SHORTENER_API", "2a10eb6174978c94694823b9ead4ae89f68c26be") # Shortener API key
+SHORTENER_WEBSITE = environ.get("SHORTENER_WEBSITE", "vplink.in") # Shortener website
 
-SHORTENER_API2 = environ.get("SHORTENER_API2", "av_botz_COFb8XnAV9VydADgvw3dfw5b6t3VN")  # Shortener API key for second website
-SHORTENER_WEBSITE2 = environ.get("SHORTENER_WEBSITE2", "mrn-officialx.vercel.app") # Shortener website for second website
+SHORTENER_API2 = environ.get("SHORTENER_API2", "1b8e94e97189da28b35fcab06c0850bd92569751")  # Shortener API key for second website
+SHORTENER_WEBSITE2 = environ.get("SHORTENER_WEBSITE2", "arolinks.com") # Shortener website for second website
 
 TWO_VERIFY_GAP = int(environ.get('TWO_VERIFY_GAP', "43200"))  # 12 ghante = 43200 seconds (24 ghante mein 2 baar verify)
 
